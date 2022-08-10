@@ -1,0 +1,19 @@
+@import "variables";
+
+body{
+    background-color:#1F2937
+}
+
+p{
+  font-size:$font-size-default;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $text-white;
+  max-width: 900px;
+  margin: 50px auto;
+  height:100vh;
+}

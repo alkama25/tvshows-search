@@ -1,5 +1,8 @@
 <template>
-  <div>Header</div>
+  <header>
+    <h1>TV SHOWS</h1>
+    <p>Search TV shows by name</p>
+  </header>
 </template>
 
 <script>
