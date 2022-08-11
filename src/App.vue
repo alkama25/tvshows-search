@@ -2,8 +2,8 @@
   <main>
     <div id="app">
       <header-bar></header-bar>
-      <search-bar></search-bar>
-      <shows-list></shows-list>
+      <search-bar @getMovies="getMovies"></search-bar>
+      <shows-list :movieListRecords="movieListRecords"></shows-list>
     </div>
   </main>
 </template>
@@ -18,7 +18,17 @@ export default {
   components: {
     HeaderBar,
     SearchBar,
-    ShowsList
+    ShowsList,
+  },
+  data() {
+    return {
+      movieListRecords: [],
+    };
+  },
+  methods: {
+    getMovies(records) {
+      this.movieListRecords = records;
+    },
   },
 };
 </script>

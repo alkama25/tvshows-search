@@ -1,19 +1,25 @@
 <template>
-  <section class="grid-container">
-    <div v-for="num in 12" :key="num" class="grid-item">
-      <a href="http://www.hbo.com/girls" target="blank">
-        <img src="https://static.tvmaze.com/uploads/images/medium_portrait/31/78286.jpg" />
+  <section class="grid-container" v-if="movieListRecords.length">
+    <div v-for="movie in movieListRecords" :key="movie.show.id" class="grid-item">
+      <a :href="movie.show.officialSite" target="blank">
+        <img :src="movie.show.image.original" />
       </a>
 
-      <p>Name : Movie name</p>
-      <p>Language : Movie language</p>
-      <p>Premiered on : date</p>
+      <p>Name : {{movie.show.name}}</p>
+      <p>Language : {{movie.show.language}}</p>
+      <p>Premiered on : {{movie.show.premiered}}</p>
     </div>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    movieListRecords: {
+      type: Array,
+    },
+  },
+};
 </script>
 
 <style></style>
