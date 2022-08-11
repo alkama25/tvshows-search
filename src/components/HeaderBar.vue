@@ -1,7 +1,6 @@
 <template>
   <header>
-    <h1>TV SHOWS</h1>
-    <p>Search TV shows by name</p>
+    <h1>Search for a movie</h1>
   </header>
 </template>
 
