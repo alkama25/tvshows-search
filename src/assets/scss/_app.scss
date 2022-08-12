@@ -39,6 +39,10 @@ header{
   }
 }
 
+.main-section{
+  padding-bottom: 2.5rem;
+}
+
 @media(max-width:767px) {
   .action-icon{
     justify-self: center;
@@ -98,6 +102,14 @@ input[type=search]{
   &:hover{
     opacity:.75;
   }
+}
+
+button{
+  padding:.625rem 1.25rem;
+  font-size:.875rem;
+  cursor: pointer;
+  border:transparent;
+  border-radius: .375rem;
 }
 
 

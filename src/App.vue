@@ -20,13 +20,13 @@ export default {
   data() {
     return {
       movieListRecords: [],
-      searchTerm: '',
+      searchTerm: "",
     };
   },
   methods: {
     getMovies(records, searchString) {
       this.movieListRecords = records;
-      this.searchTerm = searchString
+      this.searchTerm = searchString;
     },
   },
 };
