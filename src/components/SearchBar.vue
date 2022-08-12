@@ -1,10 +1,11 @@
 <template>
   <header>
-    <img src="../assets/icons/action.svg" class="action-icon"/>
+    <img src="../assets/icons/action.svg" class="action-icon" />
     <input
       type="search"
-      @blur="fetchMovieList($event.target.value)"
       placeholder="Type and search any TV Show"
+      v-model="searchTerm"
+      @blur="fetchMovieList"
     />
     <a target="_blank" href="https://github.com/alkama25/tvshows-search" class="gitLink">
       <img src="../assets/icons/github.svg" alt="github-logo" class="gitIcon" />
@@ -18,13 +19,14 @@ export default {
   data() {
     return {
       movieList: [],
+      searchTerm: '',
     };
   },
   methods: {
-    async fetchMovieList(searchTerm) {
+    async fetchMovieList() {
       try {
-        this.movieList = await getMovieList(searchTerm);
-        this.$emit("getMovies", this.movieList);
+        this.movieList = await getMovieList(this.searchTerm);
+        this.$emit("getMovies", this.movieList, this.searchTerm);
       } catch (e) {
         console.log(e);
       }

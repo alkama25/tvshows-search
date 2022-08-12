@@ -2,7 +2,7 @@
   <main>
     <div id="app">
       <search-bar @getMovies="getMovies"></search-bar>
-      <shows-list :movieListRecords="movieListRecords"></shows-list>
+      <shows-list :movieListRecords="movieListRecords" :searchTerm="searchTerm"></shows-list>
     </div>
   </main>
 </template>
@@ -20,11 +20,13 @@ export default {
   data() {
     return {
       movieListRecords: [],
+      searchTerm: '',
     };
   },
   methods: {
-    getMovies(records) {
+    getMovies(records, searchString) {
       this.movieListRecords = records;
+      this.searchTerm = searchString
     },
   },
 };
