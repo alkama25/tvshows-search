@@ -5,9 +5,7 @@
         <img :src="movie.show.image.original" />
       </a>
 
-      <p>Name : {{movie.show.name}}</p>
-      <p>Language : {{movie.show.language}}</p>
-      <p>Premiered on : {{movie.show.premiered}}</p>
+      <p>{{ movie.show.name }}, {{ movie.show.language }}</p>
     </div>
   </section>
 </template>
