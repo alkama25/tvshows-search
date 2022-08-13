@@ -13,12 +13,19 @@
     <h1 v-if="searchTerm.length && moviesToShow.length === 0">
       No results found. Please try again
     </h1>
-    <button type="button" @click="moviesVisible += count" v-if="companiesVisible < movieListRecords.length">Load more...</button>
+    <button
+      type="button"
+      @click="moviesVisible += count"
+      v-if="moviesVisible < movieListRecords.length"
+    >
+      Load more...
+    </button>
   </section>
 </template>
 
 <script>
 export default {
+  name: ShowsList,
   props: {
     searchTerm: {
       type: String,
@@ -31,11 +38,11 @@ export default {
     return {
       moviesVisible: 12,
       count: 12,
-    }
+    };
   },
   computed: {
     moviesToShow() {
-      return this.movieListRecords.slice(0, this.companiesVisible);
+      return this.movieListRecords.slice(0, this.moviesVisible);
     },
   },
 };
