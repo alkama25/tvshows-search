@@ -1,12 +1,15 @@
 <template>
   <header>
+    <!-- action icon -->
     <img src="../assets/icons/action.svg" class="action-icon" />
+    <!-- search input -->
     <input
       type="search"
       placeholder="Type and search any TV Show"
       v-model="searchTerm"
       @keyup="fetchMovieList($event)"
     />
+    <!-- github icon linked to repo -->
     <a target="_blank" href="https://github.com/alkama25/tvshows-search" class="gitLink">
       <img src="../assets/icons/github.svg" alt="github-logo" class="gitIcon" />
     </a>
