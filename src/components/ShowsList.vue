@@ -1,8 +1,8 @@
 <template>
   <section class="main-section">
     <h1 v-if="searchTerm === ''">Discover TV Shows and search by name</h1>
-    <div class="grid-container" v-if="moviesToShow.length > 0">
-      <div v-for="movie in moviesToShow" :key="movie.show" class="grid-item">
+    <div class="grid-container" v-if="moviesToShow.length">
+      <div v-for="movie in moviesToShow" :key="movie.show.id" class="grid-item">
         <a :href="movie.show.officialSite" target="blank">
           <img :src="movie.show.image.original" />
         </a>
@@ -10,7 +10,7 @@
         <p>{{ movie.show.name }}, {{ movie.show.language }}</p>
       </div>
     </div>
-    <h1 v-if="searchTerm.length && moviesToShow.length === 0">
+    <h1 v-if="searchTerm.length && moviesToShow.length === 0" ref="no-results">
       No results found. Please try again
     </h1>
     <button
@@ -25,7 +25,6 @@
 
 <script>
 export default {
-  name: ShowsList,
   props: {
     searchTerm: {
       type: String,
@@ -47,5 +46,3 @@ export default {
   },
 };
 </script>
-
-<style></style>
