@@ -53,8 +53,6 @@ Show List API consumption is handled through Axios. (API used - https://api.tvma
 
 ## Remarks
 
-1. Filters
-
 Further we can implement various filters like date, genre, actor names to filter out the tv shows and allow search on the basis of that filters.
 
 Allow users to mark their favorite show and add them in their watch history.
