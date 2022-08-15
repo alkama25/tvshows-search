@@ -5,6 +5,7 @@ import { shows } from "./data/shows";
 const propsData = {
   movieListRecords: shows,
   searchTerm: "as",
+  showLoader: false
 };
 
 describe("ShowsList.vue", () => {
@@ -42,6 +43,7 @@ describe("ShowsList.vue", () => {
       propsData: {
         movieListRecords: [],
         searchTerm: "as",
+        showLoader:false
       },
     });
 
@@ -54,6 +56,7 @@ describe("ShowsList.vue", () => {
       propsData: {
         movieListRecords: [],
         searchTerm: "as",
+        showLoader:false
       },
     });
 
@@ -66,6 +69,7 @@ describe("ShowsList.vue", () => {
       propsData: {
         movieListRecords: [],
         searchTerm: "",
+        showLoader:false
       },
     });
 
@@ -87,5 +91,14 @@ describe("ShowsList.vue", () => {
     const expectedLength = 12;
 
     expect(result.length).toBeLessThanOrEqual(expectedLength);
+  });
+
+  it("Show loader till response comes from the api", () => {
+    const wrapper = shallowMount(ShowsList, {
+      propsData,
+    });
+
+    let loader = wrapper.find("div");
+    expect(wrapper.findComponent(loader).exists()).toBe(false);
   });
 });

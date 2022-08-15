@@ -2,12 +2,17 @@ import { shallowMount } from "@vue/test-utils";
 import SearchBar from "@/components/SearchBar.vue";
 
 describe("SearchBar.vue", () => {
-  it("renders a list of shows", async () => {
-    let wrapper = shallowMount(SearchBar);
-    const fetchMovieSpy = jest.spyOn(SearchBar.methods, "fetchMovieList");
-    const result = await SearchBar.methods.fetchMovieList("as");
-    await wrapper.vm.$nextTick(() => {
-      expect(fetchMovieSpy).toHaveBeenCalledTimes(1);
+  it("calls api and render the list of shows", async () => {
+    let wrapper = shallowMount(SearchBar, {
+      data() {
+        return {
+          searchTerm: "as",
+        };
+      },
     });
+    const fetchMovieSpy = jest.spyOn(SearchBar.methods, "fetchMovieList");
+    wrapper.find("input").trigger("keyup.enter");
+    await SearchBar.methods.fetchMovieList();
+    expect(fetchMovieSpy).toHaveBeenCalledTimes(1);
   });
 });

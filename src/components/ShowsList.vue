@@ -16,6 +16,10 @@
     <h1 v-if="searchTerm.length && moviesToShow.length === 0" ref="no-results">
       No results found. Please try again
     </h1>
+    <!-- loader till we get response from the api -->
+    <div class="loader" v-if="showLoader">
+      <img src="../assets/icons/loader.svg" />
+    </div>
     <!-- Button to show when array items are greater than 12 -->
     <button
       type="button"
@@ -30,6 +34,9 @@
 <script>
 export default {
   props: {
+    showLoader: {
+      type: Boolean,
+    },
     searchTerm: {
       type: String,
     },

@@ -7,7 +7,7 @@
       type="search"
       placeholder="Type and search any TV Show"
       v-model="searchTerm"
-      @keyup="fetchMovieList($event)"
+      @keyup.enter="fetchMovieList()"
     />
     <!-- github icon linked to repo -->
     <a target="_blank" href="https://github.com/alkama25/tvshows-search" class="gitLink">
@@ -23,17 +23,21 @@ export default {
     return {
       movieList: [],
       searchTerm: "",
+      loader: false,
     };
   },
   methods: {
-    async fetchMovieList(event) {
+    async fetchMovieList() {
       try {
-        if (event.keyCode === 13 && this.searchTerm.length >= 2) {
+        if (this.searchTerm && this.searchTerm.length >= 2) {
+          this.loader = true;
           this.movieList = await getMovieList(this.searchTerm);
-          this.$emit("getMovies", this.movieList, this.searchTerm);
+          this.loader = false;
+          this.$emit("getMovies", this.movieList, this.searchTerm, this.loader);
         }
       } catch (e) {
         console.log(e);
+        this.loader = false;
       }
     },
   },
