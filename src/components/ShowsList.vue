@@ -5,7 +5,10 @@
     <!-- grid to render shows -->
     <div class="grid-container" v-if="moviesToShow.length">
       <div v-for="movie in moviesToShow" :key="movie.show.id" class="grid-item">
-        <a :href="movie.show.officialSite" target="blank">
+        <a
+          :href="movie.show.officialSite ? movie.show.officialSite : 'https://www.imdb.com/'"
+          target="blank"
+        >
           <img :src="movie.show.image.original" />
         </a>
 
